@@ -1,38 +1,40 @@
-console.log("Welcome to my ultimate Rock, Paper, Scissors game!")
-console.log("Please type your move (Rock, Paper, or Scissors)!")
+console.log("Welcome to my ultimate Rock, Paper, Scissors game!\n")
 
-const playerSelection = "Rock";
+const playerSelection = prompt("Please type your move (Rock, Paper, or Scissors)!").toLowerCase()
 
 function playRound(playerSelection, computerSelection) {
-    console.log("Player chooses: " + playerSelection)
-    console.log("Computer chooses: " + computerSelection)
-    if(playerSelection == "Rock") {
-        if(computerSelection == "Scissors") {
+    if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors") {
+        console.log("Player chooses: " + playerSelection)
+        console.log("Computer chooses: " + computerSelection)
+    }
+    
+    if(playerSelection == "rock") {
+        if(computerSelection == "scissors") {
             return "You won! Rock beats Scissors!"
         }
-        else if (computerSelection == "Paper") {
+        else if (computerSelection == "paper") {
             return "You lose! Paper beats Rock!"
         }
         else {
             return "Tie game! You both chose Rock!"
         }
     }
-    else if(playerSelection == "Paper") {
-        if(computerSelection == "Rock") {
+    else if(playerSelection == "paper") {
+        if(computerSelection == "rock") {
             return "You won! Paper beats Rock!"
         }
-        else if (computerSelection == "Scissors") {
+        else if (computerSelection == "scissors") {
             return "You lose! Scissors beats Paper!"
         }
         else {
             return "Tie game! You both chose Paper!"
         }
     }
-    else if(playerSelection == "Scissors") {
-        if(computerSelection == "Paper") {
+    else if(playerSelection == "scissors") {
+        if(computerSelection == "paper") {
             return "You won! Scissors beats Paper!"
         }
-        else if (computerSelection == "Rock") {
+        else if (computerSelection == "rock") {
             return "You lose! Rock beats Paper!"
         }
         else {
@@ -40,12 +42,24 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     else {
-        return "Incorrect input, please try again!"
+        playerSelection = prompt("Incorrect input, please try again! Please type your move (Rock, Paper, or Scissors)!").toLowerCase()
+        return playRound(playerSelection, computerSelection)
     }
   }
 
 function getComputerChoice() {
-    return "Scissors"
+    var result = Math.floor(Math.random() * 3)
+    
+    if(result == 0) {
+        return "rock"
+    }
+    else if (result == 1) {
+        return "paper"
+    }
+    else {
+        return "scissors"
+    }
+    
 }
 
 const computerSelection = getComputerChoice();
