@@ -1,67 +1,94 @@
-console.log("Welcome to my ultimate Rock, Paper, Scissors game!\n")
+console.log("Welcome to my ultimate Rock, Paper, Scissors game!\n"); 
 
-const playerSelection = prompt("Please type your move (Rock, Paper, or Scissors)!").toLowerCase()
 
-function playRound(playerSelection, computerSelection) {
-    if(playerSelection == "rock" || playerSelection == "paper" || playerSelection == "scissors") {
-        console.log("Player chooses: " + playerSelection)
-        console.log("Computer chooses: " + computerSelection)
-    }
+
+function playRound(humanChoice, computerChoice) {
+    if(humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors") {
+        console.log("Player chooses: " + humanChoice);
+        console.log("Computer chooses: " + computerChoice);
     
-    if(playerSelection == "rock") {
-        if(computerSelection == "scissors") {
-            return "You won! Rock beats Scissors!"
+        if(humanChoice == "rock") {
+            if(computerChoice == "scissors") {
+                console.log("You won! Rock beats Scissors!");
+                humanScore++;
+            }
+            else if (computerChoice == "paper") {
+                console.log("You lose! Paper beats Rock!");
+                computerScore++;
+            }
+            else {
+                console.log("Tie game! You both chose Rock!");
+            }
         }
-        else if (computerSelection == "paper") {
-            return "You lose! Paper beats Rock!"
+        else if(humanChoice == "paper") {
+            if(computerChoice == "rock") {
+                console.log("You won! Paper beats Rock!");
+                humanScore++;
+            }
+            else if (computerChoice == "scissors") {
+                console.log("You lose! Scissors beats Paper!");
+                computerScore++;
+            }
+            else {
+                console.log("Tie game! You both chose Paper!");
+            }
         }
-        else {
-            return "Tie game! You both chose Rock!"
-        }
-    }
-    else if(playerSelection == "paper") {
-        if(computerSelection == "rock") {
-            return "You won! Paper beats Rock!"
-        }
-        else if (computerSelection == "scissors") {
-            return "You lose! Scissors beats Paper!"
-        }
-        else {
-            return "Tie game! You both chose Paper!"
-        }
-    }
-    else if(playerSelection == "scissors") {
-        if(computerSelection == "paper") {
-            return "You won! Scissors beats Paper!"
-        }
-        else if (computerSelection == "rock") {
-            return "You lose! Rock beats Paper!"
-        }
-        else {
-            return "Tie game! You both chose Scissors!"
+        else if(humanChoice == "scissors") {
+            if(computerChoice == "paper") {
+                console.log("You won! Scissors beats Paper!");
+                humanScore++;
+            }
+            else if (computerChoice == "rock") {
+                console.log("You lose! Rock beats Paper!");
+                computerScore++;
+            }
+            else {
+                console.log("Tie game! You both chose Scissors!");
+            }
         }
     }
     else {
-        playerSelection = prompt("Incorrect input, please try again! Please type your move (Rock, Paper, or Scissors)!").toLowerCase()
-        return playRound(playerSelection, computerSelection)
+        humanChoice = prompt("Incorrect input, please try again! Please type your move (Rock, Paper, or Scissors)!").toLowerCase();
+        playRound(humanChoice, computerChoice);
     }
   }
 
 function getComputerChoice() {
-    var result = Math.floor(Math.random() * 3)
+    var result = Math.floor(Math.random() * 3);
     
     if(result == 0) {
-        return "rock"
+        return "rock";
     }
     else if (result == 1) {
-        return "paper"
+        return "paper";
     }
     else {
-        return "scissors"
+        return "scissors";
     }
     
 }
 
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-            
+function getHumanChoice() {
+    var result = prompt("Please type your move (Rock, Paper, or Scissors)!").toLowerCase();
+    return result;
+}
+
+function playGame() {
+    
+    
+    
+    for(let i = 0; i < 5; i++) {
+        console.log("Game " + (i + 1) + ":")
+        var humanChoice = getHumanChoice();
+        var computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
+        console.log("Score - Human: " + humanScore + " Computer: " + computerScore);
+    }
+    
+}
+
+var humanScore = 0;
+var computerScore = 0;
+playGame();
+
+
