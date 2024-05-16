@@ -77,18 +77,34 @@ function playGame() {
     
     
     
-    for(let i = 0; i < 5; i++) {
-        console.log("Game " + (i + 1) + ":")
-        var humanChoice = getHumanChoice();
-        var computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
-        console.log("Score - Human: " + humanScore + " Computer: " + computerScore);
-    }
-    
+    // for(let i = 0; i < 5; i++) {
+    //     console.log("Game " + (i + 1) + ":")
+    //     var humanChoice = getHumanChoice();
+    //     var computerChoice = getComputerChoice();
+    //     playRound(humanChoice, computerChoice);
+    //     console.log("Score - Human: " + humanScore + " Computer: " + computerScore);
+    // }  
 }
 
 var humanScore = 0;
 var computerScore = 0;
-playGame();
+// playGame();
+
+const rockButton = document.querySelector("#rock");
+rockButton.addEventListener("click", () => {
+    console.log("Rock button was pressed!");
+  });
+
+const paperButton = document.querySelector("#paper");
+paperButton.addEventListener("click", () => {
+    console.log("Paper button was pressed!");
+  });
+
+const scissorsButton = document.querySelector("#scissors");
+scissorsButton.addEventListener("click", () => {
+    console.log("Scissors button was pressed!");
+  });
+
+
 
 
